@@ -11,6 +11,7 @@ bot = discord.Bot()
 
 # Set up file imports
 from user import User
+import database
 
 @bot.event
 async def on_ready():
@@ -21,5 +22,9 @@ async def ping(ctx):
     test = User('test')
     test.xp = 200
     return await ctx.respond(test.get_level())
+
+@bot.slash_command(description="test")
+async def test(ctx):
+    return await ctx.respond(database.test())
 
 bot.run(TOKEN)
