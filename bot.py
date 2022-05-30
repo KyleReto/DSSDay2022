@@ -12,6 +12,7 @@ bot = discord.Bot()
 # Set up file imports
 from user import User
 import database
+import combat
 
 @bot.event
 async def on_ready():
@@ -25,6 +26,6 @@ async def ping(ctx):
 
 @bot.slash_command(description="test")
 async def test(ctx):
-    return await ctx.respond(database.test())
+    return await ctx.respond("this is a button", view=combat.CombatView())
 
 bot.run(TOKEN)
